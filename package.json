@@ -1,0 +1,19 @@
+{
+  "name": "ttp-fs-server",
+  "version": "1.0.0",
+  "description": "ttp app for stock server",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js"
+  },
+  "author": "Evie Ren",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^4.1.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
