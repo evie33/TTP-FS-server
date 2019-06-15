@@ -1,5 +1,10 @@
 const express = require('express');
 const app = express();
+const { db } = require('./models');
+
+db.authenticate().then(() => {
+  console.log('connected to the database');
+});
 
 app.get('/api/xx', (req, res) => {
   const body = [
