@@ -37,8 +37,13 @@ router.post('/logout', (req, res) => {
   res.redirect('/');
 });
 
+router.put('/user', async (req, res) => {
+  const user = await User.findOne({ where: { id: req.body.userId } });
+  const data = await user.update(req.body);
+  res.json(data);
+});
+
 router.get('/user', (req, res) => {
-  console.log('req.user in /user', req.user);
   res.json(req.user);
 });
 

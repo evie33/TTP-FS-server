@@ -7,7 +7,7 @@ const User = db.define('user', {
     type: Sequelize.STRING
   },
   balance: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.FLOAT,
     defaultValue: 5000,
     validate: {
       min: 0

@@ -6,7 +6,6 @@ const compression = require('compression');
 const session = require('express-session');
 const passport = require('passport');
 const db = require('./db');
-const User = require('./db/models/user');
 
 // passport registration
 passport.serializeUser((user, done) => done(null, user));

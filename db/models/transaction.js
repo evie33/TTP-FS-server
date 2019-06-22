@@ -2,25 +2,19 @@ const Sequelize = require('sequelize');
 const db = require('./db');
 
 const Transaction = db.define('transaction', {
-  buyDate: {
-    type: Sequelize.DATE
-  },
-  sellDate: {
-    type: Sequelize.DATE
-  },
   buyPrice: {
-    type: Sequelize.INTEGER
+    type: Sequelize.FLOAT
   },
   sellPrice: {
-    type: Sequelize.INTEGER
+    type: Sequelize.FLOAT
   },
   tickerSymbol: {
     type: Sequelize.STRING
   },
-  sellAmout: {
+  sellQuantity: {
     type: Sequelize.INTEGER
   },
-  buyAmount: {
+  buyQuantity: {
     type: Sequelize.INTEGER
   }
 });
