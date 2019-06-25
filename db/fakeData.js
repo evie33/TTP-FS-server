@@ -12,19 +12,19 @@ const transactions = [
   {
     tickerSymbol: 'AAPL',
     buyPrice: 6,
-    buyQuantity: 3,
+    quantity: 3,
     userId: 1
   },
   {
     tickerSymbol: 'AAPL',
     sellPrice: 10,
-    sellQuantity: 2,
+    quantity: 2,
     userId: 1
   },
   {
     tickerSymbol: 'ABC',
     buyPrice: 7,
-    buyQuantity: 4,
+    quantity: 4,
     userId: 1
   }
 ];

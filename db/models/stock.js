@@ -5,11 +5,11 @@ const Stock = db.define('stock', {
   tickerSymbol: {
     type: Sequelize.STRING
   },
-  buyQuantity: {
+  quantity: {
     type: Sequelize.INTEGER
   },
-  buyPrice: {
-    type: Sequelize.FLOAT
+  totalBuy: {
+    type: Sequelize.DECIMAL(10, 2)
   }
 });
 
