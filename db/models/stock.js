@@ -10,6 +10,9 @@ const Stock = db.define('stock', {
   },
   totalBuy: {
     type: Sequelize.DECIMAL(10, 2)
+  },
+  currentPrice: {
+    type: Sequelize.DECIMAL(10, 2)
   }
 });
 

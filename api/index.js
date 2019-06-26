@@ -8,23 +8,47 @@ router.post('/stocks/purchase', async (req, res, next) => {
   try {
     const [stock, wasCreated] = await Stock.findOrCreate({
       where: {
-        tickerSymbol: req.body.tickerSymbol
+        tickerSymbol: req.body.tickerSymbol,
+        userId: req.user.id
       }
     });
     if (!wasCreated) {
-      let newQuantity = parseInt(stock.quantity) + parseInt(req.body.quantity);
-      let newTotal = parseFloat(stock.totalBuy) + parseFloat(req.body.totalBuy);
+      const newQuantity =
+        parseInt(stock.quantity) + parseInt(req.body.quantity);
+      const newTotal =
+        parseFloat(stock.totalBuy) + parseFloat(req.body.totalBuy);
       const updatedStock = await stock.update({
         quantity: newQuantity,
         totalBuy: newTotal
       });
+
       res.json(updatedStock);
+    } else {
+      const newStock = await stock.update({
+        quantity: req.body.quantity,
+        totalBuy: req.body.totalBuy
+      });
+      res.json(newStock);
     }
-    res.json(stock);
   } catch (err) {
     console.log(err);
   }
 });
+
+router.put(
+  '/stocks/updateCurrentPrice/:tickerSymbol',
+  async (req, res, next) => {
+    try {
+      const stock = await Stock.findOne({
+        where: { tickerSymbol: req.params.tickerSymbol }
+      });
+      const updateStock = await stock.update({ currentPrice: req.body.data });
+      res.json(updateStock);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+);
 
 router.get('/stocks/all', async (req, res, next) => {
   try {
@@ -33,6 +57,7 @@ router.get('/stocks/all', async (req, res, next) => {
         userId: req.user.id
       }
     });
+
     res.json(stocks);
   } catch (err) {
     console.error(err);

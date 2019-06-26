@@ -37,14 +37,30 @@ router.post('/logout', (req, res) => {
   res.redirect('/');
 });
 
-router.put('/user', async (req, res) => {
-  const user = await User.findOne({ where: { id: req.body.userId } });
-  const data = await user.update(req.body);
-  res.json(data);
+router.put('/user', async (req, res, next) => {
+  try {
+    const userUpdate = await User.findOne({ where: { id: req.body.userId } });
+    const user = await userUpdate.update({
+      balance: req.body.balance
+    });
+
+    res.json(user);
+  } catch (err) {
+    next(err);
+  }
 });
 
-router.get('/user', (req, res) => {
-  res.json(req.user);
+router.get('/user', async (req, res, next) => {
+  try {
+    console.log(req.user);
+    const newUser = await User.findOne({ where: { email: req.user.email } });
+    if (newUser.balance !== req.user.balance) {
+      res.json(newUser);
+    }
+    res.json(req.user);
+  } catch (err) {
+    next(err);
+  }
 });
 
 module.exports = router;

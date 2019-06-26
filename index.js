@@ -11,8 +11,6 @@ const db = require('./db');
 passport.serializeUser((user, done) => done(null, user));
 passport.deserializeUser((user, done) => {
   try {
-    console.log('-------', user);
-    // const user = await User.fndOne({ where: { id: id } });
     done(null, user);
   } catch (err) {
     done(err);

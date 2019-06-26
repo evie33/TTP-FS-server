@@ -11,19 +11,19 @@ const users = [
 const transactions = [
   {
     tickerSymbol: 'AAPL',
-    buyPrice: 6,
+    totalBuy: 6,
     quantity: 3,
     userId: 1
   },
   {
     tickerSymbol: 'AAPL',
-    sellPrice: 10,
+    totalSell: 10,
     quantity: 2,
     userId: 1
   },
   {
     tickerSymbol: 'ABC',
-    buyPrice: 7,
+    totalBuy: 7,
     quantity: 4,
     userId: 1
   }
@@ -34,14 +34,14 @@ const transactions = [
 const stocks = [
   {
     tickerSymbol: 'ABC',
-    buyQuantity: 4,
-    buyPrice: 7,
+    quantity: 4,
+    totalBuy: 7,
     userId: 1
   },
   {
     tickerSymbol: 'AAPL',
-    buyQuantity: 4,
-    buyPrice: 6,
+    quantity: 4,
+    totalBuy: 6,
     userId: 1
   }
 ];
